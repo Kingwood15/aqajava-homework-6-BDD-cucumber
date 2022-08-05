@@ -24,6 +24,10 @@ public class DashboardPage {
         heading.shouldBe(Condition.visible);
     }
 
+    public void verifyIsDashboardPage() {
+        new DashboardPage();
+    }
+
     public int getCardBalance(String cardId) {
         // TODO: перебрать все карты и найти по атрибуту data-test-id
         String text = "0";

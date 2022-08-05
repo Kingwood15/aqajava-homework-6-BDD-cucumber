@@ -17,4 +17,11 @@ public class LoginPage {
         loginButton.click();
         return new VerificationPage();
     }
+
+    public VerificationPage validLoginCucumber(String login, String password) {
+        loginField.setValue(login);
+        passwordField.setValue(password);
+        loginButton.click();
+        return new VerificationPage();
+    }
 }
