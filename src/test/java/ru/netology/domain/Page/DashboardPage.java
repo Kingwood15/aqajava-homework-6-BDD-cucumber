@@ -68,6 +68,8 @@ public class DashboardPage {
                 transferAmount.sendKeys(Keys.LEFT_CONTROL + "A");
                 transferAmount.sendKeys(Keys.BACK_SPACE);
                 transferAmount.setValue(String.valueOf(sum));
+                transferFrom.sendKeys(Keys.LEFT_CONTROL + "A");
+                transferFrom.sendKeys(Keys.BACK_SPACE);
                 transferFrom.setValue(cardFrom);
                 transferButton.click();
                 break;
@@ -91,5 +93,31 @@ public class DashboardPage {
             }
         }
         return new DashboardPage();
+    }
+
+    public void shouldBalanceOut() {
+        var authInfo = DataHelper.getAuthInfo();
+        DashboardPage dashboardPage = new DashboardPage();
+        int beforeBalanceFirstCard = getIdAccountBalance(DataHelper.getFirstCardInfo(authInfo));
+        int beforeBalanceSecondCard = getIdAccountBalance(DataHelper.getSecondCardInfo(authInfo));
+        int difference;
+        if (beforeBalanceFirstCard == beforeBalanceSecondCard) {
+            return;
+        }
+        if (beforeBalanceFirstCard > beforeBalanceSecondCard) {
+            difference = beforeBalanceFirstCard - beforeBalanceSecondCard;
+            difference = difference / 2;
+            transferMoney(
+                    DataHelper.getSecondCardInfo(authInfo),
+                    DataHelper.getFirstCardInfo(authInfo).getCardNumber(),
+                    difference);
+        } else {
+            difference = beforeBalanceSecondCard - beforeBalanceFirstCard;
+            difference = difference / 2;
+            transferMoney(
+                    DataHelper.getFirstCardInfo(authInfo),
+                    DataHelper.getSecondCardInfo(authInfo).getCardNumber(),
+                    difference);
+        }
     }
 }

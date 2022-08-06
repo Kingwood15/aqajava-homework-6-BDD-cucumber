@@ -56,8 +56,8 @@ public class TransferSteps {
         dashboardPage.verifyTrasferMoney(cardTo, balance);
     }
 
-    @Также("вернуть баланс в исходное состояние")
+    @И("вернуть баланс в исходное состояние")
     public void balanceMoney() {
-
+        dashboardPage.shouldBalanceOut();
     }
 }
