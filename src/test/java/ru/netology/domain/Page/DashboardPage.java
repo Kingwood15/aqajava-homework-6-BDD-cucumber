@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import lombok.val;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.Keys;
 import ru.netology.domain.Data.DataHelper;
 
@@ -26,6 +27,13 @@ public class DashboardPage {
 
     public void verifyIsDashboardPage() {
         new DashboardPage();
+    }
+
+    public void verifyTrasferMoney(String searchCard, String expectedBalance) {
+        DataHelper.Card cardTo = DataHelper.searchCardInfo(searchCard);
+        //удаление пробелов из ожидаемого результата
+        expectedBalance = expectedBalance.replaceAll("\\s+","");
+        Assertions.assertEquals(expectedBalance, String.valueOf(getCardBalance(cardTo.getId())));
     }
 
     public int getCardBalance(String cardId) {
@@ -60,6 +68,23 @@ public class DashboardPage {
                 transferAmount.sendKeys(Keys.LEFT_CONTROL + "A");
                 transferAmount.sendKeys(Keys.BACK_SPACE);
                 transferAmount.setValue(String.valueOf(sum));
+                transferFrom.setValue(cardFrom);
+                transferButton.click();
+                break;
+            }
+        }
+        return new DashboardPage();
+    }
+
+    public DashboardPage transferMoneyCucumber(String searchCard, String cardFrom, String sum) {
+        DataHelper.Card cardTo = DataHelper.searchCardInfo(searchCard);
+        for (SelenideElement card : cards) {
+            String text = card.attr("data-test-id");
+            if (text.equals(cardTo.getId())) {
+                card.$("button.button").click();
+                transferAmount.sendKeys(Keys.LEFT_CONTROL + "A");
+                transferAmount.sendKeys(Keys.BACK_SPACE);
+                transferAmount.setValue(sum);
                 transferFrom.setValue(cardFrom);
                 transferButton.click();
                 break;

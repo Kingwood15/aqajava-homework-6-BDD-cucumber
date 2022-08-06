@@ -39,4 +39,16 @@ public class DataHelper {
     public static Card getSecondCardInfo(AuthInfo authInfo) {
         return new Card("0f3f5c2a-249e-4c3d-8287-09f7a039391d", "5559 0000 0000 0002");
     }
+
+    public static Card searchCardInfo(String cardNumber) {
+        AuthInfo authInfo = getAuthInfo();
+        DataHelper.Card searchCard = new Card("0","0");
+        if(getFirstCardInfo(authInfo).cardNumber.equals(cardNumber)) {
+            searchCard = getFirstCardInfo(authInfo);
+        }
+        if(getSecondCardInfo(authInfo).cardNumber.equals(cardNumber)) {
+            searchCard = getFirstCardInfo(authInfo);
+        }
+        return searchCard;
+    }
 }
