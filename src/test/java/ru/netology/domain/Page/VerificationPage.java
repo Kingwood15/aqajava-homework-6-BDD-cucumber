@@ -30,7 +30,7 @@ public class VerificationPage {
         verificationButton.click();
     }
 
-    public void verifyIsVerificationPage(){
+    public void verifyIsVerificationPage() {
         errorMassage.shouldHave(exactText("Ошибка! Неверно указан код! Попробуйте ещё раз."))
                 .shouldBe(Condition.visible);
     }

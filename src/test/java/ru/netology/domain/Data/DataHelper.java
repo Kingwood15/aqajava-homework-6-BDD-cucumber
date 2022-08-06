@@ -42,11 +42,11 @@ public class DataHelper {
 
     public static Card searchCardInfo(String cardNumber) {
         AuthInfo authInfo = getAuthInfo();
-        DataHelper.Card searchCard = new Card("0","0");
-        if(getFirstCardInfo(authInfo).cardNumber.equals(cardNumber)) {
+        DataHelper.Card searchCard = new Card("0", "0");
+        if (getFirstCardInfo(authInfo).cardNumber.equals(cardNumber)) {
             searchCard = getFirstCardInfo(authInfo);
         }
-        if(getSecondCardInfo(authInfo).cardNumber.equals(cardNumber)) {
+        if (getSecondCardInfo(authInfo).cardNumber.equals(cardNumber)) {
             searchCard = getFirstCardInfo(authInfo);
         }
         return searchCard;

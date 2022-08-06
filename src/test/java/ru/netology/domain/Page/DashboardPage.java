@@ -32,7 +32,7 @@ public class DashboardPage {
     public void verifyTrasferMoney(String searchCard, String expectedBalance) {
         DataHelper.Card cardTo = DataHelper.searchCardInfo(searchCard);
         //удаление пробелов из ожидаемого результата
-        expectedBalance = expectedBalance.replaceAll("\\s+","");
+        expectedBalance = expectedBalance.replaceAll("\\s+", "");
         Assertions.assertEquals(expectedBalance, String.valueOf(getCardBalance(cardTo.getId())));
     }
 

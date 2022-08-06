@@ -34,7 +34,6 @@ public class TransferSteps {
 
     @Когда("пользователь переводит {string} рублей с карты с номером {string} на свою {string} карту с главной страницы")
     public void transferMoney(String sum, String cardFrom, String cardTo) {
-        //todo найти id карты по номеру
         cardTo = cardPattern + cardTo;
         dashboardPage.transferMoneyCucumber(cardTo, cardFrom, sum);
     }
@@ -51,7 +50,6 @@ public class TransferSteps {
 
     @Тогда("баланс его {string} карты из списка на главной странице должен стать {string} рублей")
     public void verifyTransferMoney(String cardTo, String balance) {
-        //todo проверка
         cardTo = cardPattern + cardTo;
         dashboardPage.verifyTrasferMoney(cardTo, balance);
     }
