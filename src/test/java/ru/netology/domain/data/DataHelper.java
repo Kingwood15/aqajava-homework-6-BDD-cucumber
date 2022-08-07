@@ -1,6 +1,7 @@
 package ru.netology.domain.data;
 
 import lombok.Value;
+import ru.netology.domain.page.DashboardPage;
 
 public class DataHelper {
 
@@ -40,6 +41,7 @@ public class DataHelper {
         return new Card("0f3f5c2a-249e-4c3d-8287-09f7a039391d", "5559 0000 0000 0002");
     }
 
+    //добавленный метод
     public static Card searchCardInfo(String cardNumber) {
         AuthInfo authInfo = getAuthInfo();
         DataHelper.Card searchCard = new Card("0", "0");
@@ -50,5 +52,31 @@ public class DataHelper {
             searchCard = getFirstCardInfo(authInfo);
         }
         return searchCard;
+    }
+
+    public void shouldBalanceOut() {
+        var authInfo = DataHelper.getAuthInfo();
+        DashboardPage dashboardPage = new DashboardPage();
+        int beforeBalanceFirstCard = dashboardPage.getIdAccountBalance(DataHelper.getFirstCardInfo(authInfo));
+        int beforeBalanceSecondCard = dashboardPage.getIdAccountBalance(DataHelper.getSecondCardInfo(authInfo));
+        int difference;
+        if (beforeBalanceFirstCard == beforeBalanceSecondCard) {
+            return;
+        }
+        if (beforeBalanceFirstCard > beforeBalanceSecondCard) {
+            difference = beforeBalanceFirstCard - beforeBalanceSecondCard;
+            difference = difference / 2;
+            var transferPage = dashboardPage.replenishCard(DataHelper.getSecondCardInfo(authInfo));
+            transferPage.transferMoney(
+                    DataHelper.getFirstCardInfo(authInfo).getCardNumber(),
+                    difference);
+        } else {
+            difference = beforeBalanceSecondCard - beforeBalanceFirstCard;
+            difference = difference / 2;
+            var transferPage = dashboardPage.replenishCard(DataHelper.getFirstCardInfo(authInfo));
+            transferPage.transferMoney(
+                    DataHelper.getSecondCardInfo(authInfo).getCardNumber(),
+                    difference);
+        }
     }
 }

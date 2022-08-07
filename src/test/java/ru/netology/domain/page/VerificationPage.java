@@ -19,6 +19,7 @@ public class VerificationPage {
         return new DashboardPage();
     }
 
+    //добавленные методы
     public DashboardPage validVerifyCucumber(String verificationCode) {
         verificationField.setValue(verificationCode);
         verificationButton.click();
