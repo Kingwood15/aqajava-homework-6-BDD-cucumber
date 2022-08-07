@@ -1,4 +1,4 @@
-package ru.netology.domain.Page;
+package ru.netology.domain.page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
@@ -6,7 +6,7 @@ import com.codeborne.selenide.SelenideElement;
 import lombok.val;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.Keys;
-import ru.netology.domain.Data.DataHelper;
+import ru.netology.domain.data.DataHelper;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;

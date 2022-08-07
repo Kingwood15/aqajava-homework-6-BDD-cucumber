@@ -1,8 +1,8 @@
-package ru.netology.domain.Page;
+package ru.netology.domain.page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import ru.netology.domain.Data.DataHelper;
+import ru.netology.domain.data.DataHelper;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;

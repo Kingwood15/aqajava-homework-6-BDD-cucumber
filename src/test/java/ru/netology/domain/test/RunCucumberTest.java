@@ -1,4 +1,4 @@
-package ru.netology.domain.Test;
+package ru.netology.domain.test;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;

@@ -1,10 +1,10 @@
-package ru.netology.domain.Steps;
+package ru.netology.domain.steps;
 
 import com.codeborne.selenide.Selenide;
 import io.cucumber.java.ru.*;
-import ru.netology.domain.Page.DashboardPage;
-import ru.netology.domain.Page.LoginPage;
-import ru.netology.domain.Page.VerificationPage;
+import ru.netology.domain.page.DashboardPage;
+import ru.netology.domain.page.LoginPage;
+import ru.netology.domain.page.VerificationPage;
 
 public class TransferSteps {
     private static LoginPage loginPage;
