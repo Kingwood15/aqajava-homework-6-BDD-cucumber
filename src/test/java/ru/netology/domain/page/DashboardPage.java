@@ -4,8 +4,6 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import lombok.val;
-import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.Keys;
 import ru.netology.domain.data.DataHelper;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -51,23 +49,4 @@ public class DashboardPage {
         }
         return new TransferPage();
     }
-
-
-    // добавленный метод
-    /*public DashboardPage transferMoneyCucumber(String searchCard, String cardFrom, String sum) {
-        DataHelper.Card cardTo = DataHelper.searchCardInfo(searchCard);
-        for (SelenideElement card : cards) {
-            String text = card.attr("data-test-id");
-            if (text.equals(cardTo.getId())) {
-                card.$("button.button").click();
-                transferAmount.sendKeys(Keys.LEFT_CONTROL + "A");
-                transferAmount.sendKeys(Keys.BACK_SPACE);
-                transferAmount.setValue(sum);
-                transferFrom.setValue(cardFrom);
-                transferButton.click();
-                break;
-            }
-        }
-        return new DashboardPage();
-    }*/
 }

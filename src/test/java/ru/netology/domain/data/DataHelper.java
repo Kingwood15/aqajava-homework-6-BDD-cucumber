@@ -54,7 +54,7 @@ public class DataHelper {
         return searchCard;
     }
 
-    public void shouldBalanceOut() {
+    public static void shouldBalanceOut() {
         var authInfo = DataHelper.getAuthInfo();
         DashboardPage dashboardPage = new DashboardPage();
         int beforeBalanceFirstCard = dashboardPage.getIdAccountBalance(DataHelper.getFirstCardInfo(authInfo));
@@ -69,14 +69,14 @@ public class DataHelper {
             var transferPage = dashboardPage.replenishCard(DataHelper.getSecondCardInfo(authInfo));
             transferPage.transferMoney(
                     DataHelper.getFirstCardInfo(authInfo).getCardNumber(),
-                    difference);
+                    String.valueOf(difference));
         } else {
             difference = beforeBalanceSecondCard - beforeBalanceFirstCard;
             difference = difference / 2;
             var transferPage = dashboardPage.replenishCard(DataHelper.getFirstCardInfo(authInfo));
             transferPage.transferMoney(
                     DataHelper.getSecondCardInfo(authInfo).getCardNumber(),
-                    difference);
+                    String.valueOf(difference));
         }
     }
 }

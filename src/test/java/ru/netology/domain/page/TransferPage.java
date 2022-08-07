@@ -24,10 +24,10 @@ public class TransferPage {
         return new TransferPage();
     }
 
-    public DashboardPage transferMoney(String cardFrom, int sum) {
+    public DashboardPage transferMoney(String cardFrom, String sum) {
         transferAmount.sendKeys(Keys.LEFT_CONTROL + "A");
         transferAmount.sendKeys(Keys.BACK_SPACE);
-        transferAmount.setValue(String.valueOf(sum));
+        transferAmount.setValue(sum);
         transferFrom.sendKeys(Keys.LEFT_CONTROL + "A");
         transferFrom.sendKeys(Keys.BACK_SPACE);
         transferFrom.setValue(cardFrom);

@@ -19,19 +19,12 @@ public class VerificationPage {
         return new DashboardPage();
     }
 
-    //добавленные методы
-    public DashboardPage validVerifyCucumber(String verificationCode) {
-        verificationField.setValue(verificationCode);
-        verificationButton.click();
-        return new DashboardPage();
-    }
-
-    public void invalidVerifyCucumber(String verificationCode) {
-        verificationField.setValue(verificationCode);
+    public void invalidVerify(DataHelper.VerificationCode info) {
+        verificationField.setValue(info.getCode());
         verificationButton.click();
     }
 
-    public void verifyIsVerificationPage() {
+    public void errorVerify() {
         errorMassage.shouldHave(exactText("Ошибка! Неверно указан код! Попробуйте ещё раз."))
                 .shouldBe(Condition.visible);
     }

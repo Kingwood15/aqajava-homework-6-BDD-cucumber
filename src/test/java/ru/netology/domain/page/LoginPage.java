@@ -17,12 +17,4 @@ public class LoginPage {
         loginButton.click();
         return new VerificationPage();
     }
-
-    //добавленный метод
-    public VerificationPage validLoginCucumber(String login, String password) {
-        loginField.setValue(login);
-        passwordField.setValue(password);
-        loginButton.click();
-        return new VerificationPage();
-    }
 }
